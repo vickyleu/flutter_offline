@@ -68,15 +68,15 @@ class OfflineBuilder extends StatefulWidget {
 }
 
 class OfflineBuilderState extends State<OfflineBuilder> {
-  late Stream<ConnectivityResult> _connectivityStream;
+  late Stream<ConnectivityResult>? _connectivityStream;
 
   @override
   void initState() {
     super.initState();
 
     _connectivityStream = Stream.fromFuture(widget.connectivityService.checkConnectivity())
-        .asyncExpand((data) => widget.connectivityService.onConnectivityChanged.transform(startsWith(data)))
-        .transform(debounce(widget.debounceDuration));
+        .asyncExpand((data) => widget.connectivityService.onConnectivityChanged
+        ?.transform(startsWith(data))).transform(debounce(widget.debounceDuration));
   }
 
   @override
