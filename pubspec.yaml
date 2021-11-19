@@ -15,3 +15,8 @@ dependencies:
 
 dev_dependencies:
   pedantic: any
+
+dependency_overrides:
+  connectivity:
+    git:
+      url: "https://github.com/vickyleu/simple_connectivity.git"
